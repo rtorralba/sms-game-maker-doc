@@ -4,6 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "SMS Game Maker",
   description: "A simple game maker for SMS and GG games.",
+  base: process.env.GITHUB_ACTIONS ? '/sms-game-maker-doc/' : '/',
   cleanUrls: true,
   vite: {
     server: {
