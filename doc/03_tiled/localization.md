@@ -1,15 +1,44 @@
 ---
-title: Traducción
+title: Diseñando el Juego. Textos y Localización Multilingüe
+description: Sistema de diálogos, cuadros de texto y soporte multilingüe en SMS Game Maker
 ---
 
-Para traducir tu juego de manera sencilla, textos, pantallas... Dentro de la carpeta assets/screens y assets/texts, los ficheros que están a primer nivel el motor los cogerá para generar el juego con el idioma por defecto (default). Y para los demás idiomas hay que crear una carpeta con el código iso del idioma en minúsculas, por ejemplo español **es**, portugués **pt**...
+# Textos y Localización Multilingüe
 
-Como ejemplo en el motor ya te viene con los archivos por defecto y la carpeta del juego en español **es**.
+**SMS Game Maker** incorpora un sistema nativo para mostrar cuadros de diálogo y carteles de texto interactivos en pantalla con soporte multilingüe.
 
-El motor solo cogerá el fichero de la carpeta si existe, si no usará el de la carpeta raiz.
+---
 
-Para compilar en uno u otro idioma, al seleccionar la opción **Build->Game**, el motor te preguntará en que idioma quieres generar el juego y este se generará en una carpeta con el iso del idioma en **dist**.
+## 1. Activación del Sistema de Textos
 
-También puedes seleccionar la opción del idioma que quieras directamente en el botón de shortcuts del engine.
+En la configuración de la fase:
+* **`textsEnabled = true`:** Habilita el subsistema de ventanas de texto flotantes.
+* **Dimensiones de la Ventana:**
+  * `textsWindowX`: Coordenada X (en tiles) de la esquina superior izquierda de la ventana.
+  * `textsWindowY`: Coordenada Y (en tiles) de la ventana.
+  * `textsWindowWidth`: Ancho en columnas de la ventana de texto.
+  * `textsWindowHeight`: Alto en filas de la ventana.
 
-![](/images/frequent_shortcuts.jpg)
+---
+
+## 2. Inserción de Textos en el Mapa
+
+### En el Editor de Mapas Integrado:
+1. Selecciona la herramienta **Texto (`📝` o tecla T)** en la barra superior.
+2. Haz clic en la casilla del mapa donde deseas situar el activador de texto.
+3. Se abrirá automáticamente el **Modal de Edición de Texto Multilingüe**, donde puedes redactar el mensaje en los tres idiomas soportados:
+   - **`default`** (Inglés o idioma por defecto)
+   - **`es`** (Español)
+   - **`pt`** (Portugués)
+4. Haz clic en «Guardar» en el modal.
+
+### En Tiled Map Editor:
+1. En la capa de objetos `Sprites`, inserta un objeto de clase **`ZXSGMText`**.
+2. En sus propiedades personalizadas, rellena los campos de texto `default`, `es` y `pt`.
+
+---
+
+## 3. Comportamiento en Juego y Tipografía
+
+* **Interacción:** Cuando el protagonista entra en contacto con el activador de texto, el juego pausa temporalmente la acción y despliega la ventana flotante en las coordenadas fijadas, renderizando el texto carácter a carácter utilizando la tipografía Sinclair 8×8 (tiles 216..226 de la VRAM).
+* Al pulsar el **Botón 1** o **Botón 2**, la ventana se cierra limpiamente y la partida continúa.

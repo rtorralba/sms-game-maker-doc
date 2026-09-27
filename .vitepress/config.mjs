@@ -17,9 +17,8 @@ export default defineConfig({
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Documentación', link: '/doc/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: 'Inicio', link: '/' },
+      { text: 'Documentación', link: '/doc/' }
     ],
 
     sidebar: {
@@ -41,7 +40,7 @@ export default defineConfig({
           text: 'Imágenes base',
           items: [
             { text: 'Pantallas', link: '/doc/02_images/screens' },
-            { text: 'Tutorial ZX Paintbrush', link: '/doc/02_images/zx-paintbrush' },
+            { text: 'Editor de imágenes y paletas', link: '/doc/02_images/image-editor' },
             { text: 'Tileset', link: '/doc/02_images/tileset' },
             { text: 'Spriteset', link: '/doc/02_images/spriteset' },
             { text: 'Bala', link: '/doc/02_images/bullet' }
@@ -73,21 +72,14 @@ export default defineConfig({
         {
           text: 'Uso del motor',
           items: [
-            { text: 'Interfaz gráfica', link: '/doc/05_engine/use' }
-          ]
-        },
-        {
-          text: 'Examples',
-          items: [
-            { text: 'Markdown Examples', link: '/markdown-examples' },
-            { text: 'Runtime API Examples', link: '/api-examples' }
+            { text: 'SMS Game Maker Studio', link: '/doc/05_engine/use' }
           ]
         }
       ]
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
+      { icon: 'github', link: 'https://github.com/rtorralba/sms-game-maker' }
     ]
   }
 })

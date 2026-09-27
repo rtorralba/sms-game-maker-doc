@@ -1,28 +1,41 @@
 ---
-title: Diseñando el juego. Añadiendo plataformas móviles
+title: Diseñando el Juego. Plataformas Móviles
+description: Configuración de plataformas móviles que transportan al jugador en SMS Game Maker
 ---
 
-## Limitación
+# Plataformas Móviles
 
-La limitación es compartida con los enemigos. Puedes añadir **3 elementos móviles** contando con los enemigos, es decir, por ejemplo, 2 enemigos y una plataforma o 2 plataformas y 1 enemigo.
+Las **plataformas móviles** son entidades dinámicas de la capa `Sprites` que se desplazan de forma autónoma entre dos puntos y transportan al protagonista con suavidad cuando este se posa sobre su superficie.
 
-## Cómo añadirlas
+---
 
-Las plataformas móviles se añaden igual que los [enemigos](/doc/03_tiled/adding-enemies) con la única diferencia de que en lugar de ponerle tipo enemy tienes que poner **platform**
+## 1. Cómo Añadir una Plataforma Móvil
 
-Puedes añadir plataformas horizontales, verticales y diagonales.
+### En el Editor de Mapas Integrado:
+1. Selecciona la capa **`Sprites`** en el panel de capas.
+2. En el panel de **Sprites (16×16)**, selecciona el sprite de plataforma móvil (por defecto los sprites 8 y 9 de la primera fila).
+3. Pinta la plataforma sobre la posición inicial en el mapa.
+4. Con la herramienta **Puntero (`🛑` o tecla P)**, haz clic en el punto de destino de la plataforma. La plataforma quedará enlazada automáticamente con su destino.
+5. Puedes ajustar su velocidad seleccionándola con la herramienta de **Selección (`V`)**.
 
-## Velocidad
+### En Tiled Map Editor:
+1. En la capa de objetos `Sprites`, coloca el sprite de la plataforma móvil.
+2. Asigna la clase **`platform`** en el panel de propiedades.
+3. Inserta un punto (`Insert Point`) con clase **`ZXSGMPointer`** y vincula la plataforma en su propiedad de objeto.
 
-Puedes establecer la velocidad de la plataforma, para ello solo tienes que añadir en el mismo una propiedad personalizada **speed** de tipo **enemySpeed** y seleccionar entre 0, 1, 2 o 3 de más lento a más rápido. Si no añades la propiedad se establecerá a 3 como venía funcionando hasta ahora.
-0. Más lenta.
-1. El doble de rápida que 0.
-2. El doble de rápida que 1.
-3. Todo lo rápida que permita la CPU. Sin freno.
+---
 
-![](/images/tiled_add_platform.png)
+## 2. Tipos de Trayectoria
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/nYb-XyTHwnM?si=VBizR7sjF_E3FGE_" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+* **Horizontal:** Si el punto de inicio y el destino comparten la misma coordenada vertical (Y), la plataforma oscilará de lado a lado.
+* **Vertical:** Si comparten la misma coordenada horizontal (X), actuará como elevador subiendo y bajando.
+* **Diagonal:** Si difieren tanto en X como en Y, la plataforma se moverá en diagonal en línea recta.
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/pYU2xD-NlVA?si=3aURtYQtaFw8CP_k" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+---
 
+## 3. Física de Arrastre y Velocidad
+
+* **Arrastre del Protagonista:**
+  Cuando el protagonista aterriza sobre una plataforma móvil, el motor activa el seguimiento físico: el jugador se desplaza exactamente a la misma velocidad y dirección que la plataforma sin deslizarse ni caerse, pudiendo caminar sobre ella o saltar en cualquier instante.
+* **Velocidad (`speed`):**
+  Puedes calibrar la velocidad mediante la propiedad `speed` (valores de `0` a `3`, donde `0` es el avance más pausado y `3` la velocidad completa a 60 FPS).

@@ -1,81 +1,63 @@
 ---
-title: Diseñando el juego. Añadiendo enemigos
+title: Diseñando el Juego. Añadiendo Enemigos
+description: Guía de configuración de enemigos, IA de movimiento, disparo y jefes en SMS Game Maker
 ---
 
-## Limitación
+# Añadiendo Enemigos
 
-Puedes añadir hasta **3 enemigos en cada pantalla** y configurar su movimiento.
+Los enemigos son entidades móviles ubicadas en la capa de objetos (`Sprites`). Puedes configurar su apariencia, tipo de movimiento, velocidad, puntos de vida y comportamiento de disparo.
 
-## Posición inicial
+---
 
-Para ello deberás seleccionar la capa objects y arrastrar el 1er sprite del enemigo a posicionar donde quieras que aparezca inicialmente.
+## 1. Cómo Añadir un Enemigo
 
-Como truco, si pulsas la tecla Ctrl el enemigo se situará respetado la rejilla.
+### En el Editor de Mapas Integrado:
+1. Selecciona la capa **`Sprites`** en el panel de capas.
+2. En el panel de **Sprites (16×16)**, haz clic en el sprite correspondiente al enemigo que deseas colocar (filas 2 o 3).
+3. Pinta el enemigo sobre el mapa en la casilla deseada.
+4. Para definir su ruta, selecciona la herramienta **Puntero / Destino (`🛑` o tecla P)** y haz clic en la casilla final de su recorrido. El editor vinculará automáticamente el punto de destino con el enemigo.
+5. Con la herramienta de **Selección (`V`)**, haz clic sobre el enemigo para abrir sus propiedades en el panel lateral derecho.
 
-En la propiedad **type** de este objeto deberás introducir el text **enemy**
+### En Tiled Map Editor:
+1. Selecciona la capa de objetos `Sprites`.
+2. Arrastra el sprite del enemigo sobre el mapa.
+3. Asigna la clase **`ZXSGMEnemy`** en la ventana de propiedades.
+4. Para fijar su destino, inserta un punto (`Insert Point`) de clase **`ZXSGMPointer`** y en su propiedad de tipo objeto selecciona el enemigo correspondiente.
 
-Es recomendable que le pongas un nombre al mismo para cuando referencies la posición final a este. E.g. enemy_1
+---
 
-## Posición final
+## 2. Tipos de Movimiento (`move`)
 
-* Haz clic en el botón **Insert point**.
-* Pon este punto donde quieras que pare el enemigo manteniendo la tecla Ctrl.
-* Añade a este punto una **propiedad personalizada** (custom property) **de tipo objeto** y selecciona el enemigo relacionado con este punto.
+El parámetro `enemyMovementTypes` define la inteligencia artificial del enemigo:
 
-![](/images/enemy_movement.png)
+| Tipo | Movimiento y Comportamiento |
+| :--- | :--- |
+| **`default`** | **Patrulla Lineal:** Movimiento continuo de ida y vuelta en línea recta entre la posición de inicio y el punto de destino (horizontal, vertical o diagonal). |
+| **`defaultWithShot`** | Movimiento lineal de ida y vuelta que además dispara proyectiles hacia el jugador (si `enemyShootEnabled` está activo). |
+| **`rectangular`** | **Ruta Perimetral Horaria:** El enemigo recorre los cuatro vértices del rectángulo formado entre su coordenada de origen y el punto de destino en el sentido de las agujas del reloj. |
+| **`rectangularWithShot`** | Recorrido perimetral horario con disparo de proyectiles. |
+| **`stalker`** | **Acosador:** Persigue incansablemente al protagonista en ambos ejes (X e Y) sin necesidad de punto de destino. |
+| **`stalkerWithShot`** | Acosador que persigue y dispara proyectiles contra el protagonista. |
+| **`noReturn`** | **Misil Unidireccional:** Avanza en línea recta en un solo sentido. Muestra frame de lanzamiento en el origen, vuela por el trayecto e impacta en el destino antes de reiniciar el ciclo. |
 
-## Tipos de movimiento
+---
 
-El enemigo permite 3 tipos de movimiento:
-* **Horizontal**, el enemigo y su trayecto están a la misma altura, es decir, la y del enemigo y del punto de destino son iguales y las x distintas.
+## 3. Parámetros de Configuración del Enemigo
 
-![](/images/enemigos_movimiento_horizontal.png)
+* **`life` (int):** Puntos de vida del enemigo (por defecto `1`). Cada impacto de bala del jugador le resta 1 punto.
+  * **Enemigo Invencible:** Asigna `life = 99`. Las balas rebotarán o no surtirán efecto.
+* **`speed` (enum `enemySpeed`):**
+  * `0`: Velocidad pausada (ideal para trampas o torretas lentas).
+  * `1`: Velocidad media.
+  * `2`: Velocidad rápida.
+  * `3`: Velocidad máxima a 60 FPS (1 px/frame).
+* **`freezeOnSight` (bool):** Si se activa en un enemigo tipo `stalker`, el enemigo se paraliza instantáneamente en cuanto el protagonista se gira y lo mira de frente, reanudando la persecución cuando el jugador le da la espalda.
 
-* **Vertical**, el enemigo y su trayecto están en la misma vertical, es decir, la x del enemigo x del punto de destino son iguales y las y distintas.
+---
 
-![](/images/enemigos_movimiento_vertical.png)
+## 4. Jefes de Fin de Fase (`finishGameEnemy`)
 
-* **Diagonal**, el enemigo y el punto final no están a la misma altura ni en la misma vertical, es decir, ni la x del enemigo ni la y coinciden con la del punto de destino.
-
-![](/images/enemigos_movimiento_diagonal.png)
-
-* **Perseguir al protagonista**, El enemigo perseguirá al protagonista, simplemente hay que colocar el enemigo (poniendo en class enemy como siempre), sin definir punto de destino.
-
-* **Sin retorno**. el enemigo solo se moverá en una dirección y cuando llegue al final saldrá del mismo punto inicial. Como ese enemigo no necesita sprites en el sentido contrario, puedes utilizarlos de manera que el primer sprite que correspondería al sentido contrario de este enmigo es la animación de salida y el siguiente el de llegada.
-Para asignaer este tipo de movimiento tienes que añadir en el enemigo una propiedad **move** de tipo **enemyMovementTypes** y seleccionar el tipo **noReturn**
-
-![](/images/spriteset_no_return.jpg)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/BgKVaTydw0k?si=CWNUgT_Q5eWhreEK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
-## Cantidad de vida
-
-Puedes asignarle la cantidad de vida que tiene cada enemigo, por ejemplo si le pones cantidad de vida 5 el protagonista le tendrá que disparar 5 veces para matarlo.
-
-Para ello solo tienes que añadir una propiedad personalizada **life** **de tipo int** con el valor de la vida. Si no la defines, por defecto, el enemigo tiene una unidad de vida.
-
-![](/images/vida_enemigo.png)
-
-## Enemigos invencibles
-
-Para añadir enemigos invencibles solo tendras que ponerle en el atributo **life** el valor **99**.
-
-## Velocidad
-
-Puedes establecer la velocidad del enemigo, para ello solo tienes que añadir en el mismo una propiedad personalizada **speed** de tipo **enemySpeed** y seleccionar entre 0, 1, 2 o 3 de más lento a más rápido. Si no añades la propiedad se establecerá a 3 como venía funcionando hasta ahora.
-0. Más lento.
-1. El doble de rápido que 0.
-2. El doble de rápido que 1.
-3. Todo lo rápido que permita la CPU. Sin freno.
-
-![](/images/enemyspeed.png)
-
-
-<!-- ## Color
-
-Se le puede cambiar al enemigo el color simplemente añadiendo una propiedad personalizada **color** **de tipo int** donde tienes que poner el color de spectrum (0-7) deseado.
-
-![](/images/colores_spectrum.png)
-
-![](/images/sprites_color.png) -->
-
+Si el objetivo de la fase (`finishGameObjective`) está configurado como `killSpecificEnemy` o `itemsAndKillEnemy`:
+* En el **Editor de Mapas Integrado**: Haz clic en el botón de selección de jefe en las propiedades de la fase. Se activará el modo de selección interactivo; haz clic sobre el enemigo que actuará como jefe y quedará asignado.
+* En **Tiled**: Selecciona el enemigo jefe en el campo de objeto de la propiedad `finishGameEnemy`.
+* Al abatir a este enemigo específico, el motor registrará la victoria y dará paso a la siguiente fase o a la pantalla de Ending.

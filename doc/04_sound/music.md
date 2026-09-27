@@ -1,52 +1,49 @@
 ---
-title: Sonido. Música
+title: Sonido. Música de Fondo (VGM)
+description: Cómo añadir canciones a tu juego y programas recomendados para componer chiptune
 ---
 
-## Descarga de Vortex Tracker II
+# Música de Fondo (`music.vgm`)
 
-Para hacer nuestra música usaremos el Vortex Tracker II.
+Puedes ponerle música a cada pantalla de menú y a cada nivel de tu juego de forma muy sencilla.
 
-[DESCARGA](https://bulba.untergrund.net/vortex_e.htm)
+---
 
-La podéis hacer vosotros mismos o tal vez alguien que entienda de musiquilla os lo puede pasar en forma de proyecto.pt3.
+## 1. Dónde Colocar Tus Canciones
 
-## Que música puedes añadir en tu juego (128K)
+Solo tienes que guardar tus archivos de música en formato **`.vgm`** en las carpetas correspondientes:
 
-Para tu juego puedes añadir 6 músicas distintas, para diferenciarlas tentras que nombrarlas como aparece a continuación entre paréntesis:
-* Title o Menú (title.tap)
-* In Game 1 (music.tap)
-* In Game 2 (music2.tap)
-* In Game 3 (music3.tap)
-* Ending o final del juego (ending.tap)
-* Game Over (gameover.tap)
+* **Música del Menú de Inicio:** `game/screens/title/music.vgm`
+* **Música de la Introducción:** `game/screens/intro/music.vgm` [Opcional]
+* **Música de Fin de Partida (Game Over):** `game/screens/gameover/music.vgm` [Opcional]
+* **Música de Victoria (Final del juego):** `game/screens/ending/music.vgm`
+* **Música de la Fase 1:** `game/stage_1/music.vgm`
+* **Música de la Fase 2:** `game/stage_2/music.vgm` (y así en cada nivel)
 
-Si tienes activada la opción **musicEnabled** en la configuración solo la música In Game 1 es obligatoria, si no quieres poner alguna de ellaa, solo tienes que no poner o borrar el tap correspondiente.
+> [!TIP]
+> **Todo es automático:**
+> No tienes que convertir nada a mano. Simplemente copia tu archivo `music.vgm` en la carpeta y SMS Game Maker lo adaptará y comprimirá automáticamente al compilar la ROM de tu juego.
 
-De todas lás músicas anteriores el motor sabe perfectamente cuando han de sonar menos 2, In Game 2 y In Game 3, para indecarselo al motor, solo tendrás que añadir un puntero en **Tiled** como los que usas para delimitar el movimiento de los enemigos, pero con class o type, depende de la versión de Tiled **music2** para la música In Game 2 y music3 para la música In Game 3.
+---
 
-Con ese puntero le estarás diciendo al motor a partir de que pantalla debe sonar esa música.
+## 2. Cómo Componer o Conseguir Música
 
-![](/images/music_specify_change.png)
+Para crear tus propias canciones para el chip de sonido de Master System y Game Gear, existen programas gratuitos y muy populares entre la comunidad chiptune:
 
-Una vez suene esa musica no podrás volver a una anterior, solo podrás cambiar a la siguiente o Ending o Game Over si terminas el juego o termina tu energía.
+* **[Furnace Tracker](https://github.com/tildearrow/furnace) (Recomendado):** Un tracker gratuito, moderno y muy potente.
+* **[DefleMask](https://www.deflemask.com/):** Muy utilizado por músicos retro.
+* **[BambooTracker](https://bambootracker.github.io/):** Sencillo y ligero.
 
-## Como crear los TAP de música
+### Cómo exportar la canción:
+1. En tu programa de música, selecciona el sistema de sonido **Sega Master System (SN76489)**.
+2. Compón tu melodía usando los 3 canales de tono y el canal de percusión/ruido.
+3. Al terminar, ve al menú **Archivo ➔ Exportar** y guarda la canción en formato **VGM (`.vgm`)**.
 
-El motor funciona con el player Vortex Tracker II de Bulba como hemos comentado, por lo que tendrás que crear o buscar ficheros para este programa, PT3, VT o VT2.
+---
 
-Una vez ya con la música hecha, hay que **exportar el proyecto** a un fichero music.tap dentro de la carpeta assets/music con los nombres anteriormente explicados
+## 3. Cambiar de Canción dentro de un Nivel (`♫`)
 
-Para exportar iremos a la opción File > Exports > Save with Master System player
+Si quieres que la música cambie cuando el jugador llegue a una zona concreta (por ejemplo, al entrar en la guarida del jefe):
 
-![](/images/vortex_export_menu.png)
-
-Sólo tenéis que seleccionar para exportar la opción **TAP-file (player and module separately** y OK.
-
-![](/images/vortex_compilation_address.png)
-
-Recodad que para que la música suene tebéis que activar la propiedad en nuestro mapa **musicEnabled**
-
-![](/images/tiled_music_enabled.png)
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/8WBksEtrlPI?si=uBR9hfCTzkCuz_ta" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-
+* **En el Editor de Mapas Integrado:** Selecciona la herramienta **Música (`♫` o tecla M)** en la barra de herramientas y haz clic en la habitación donde quieras que empiece a sonar la nueva música.
+* **En Tiled:** Añade un objeto de clase `music2` o `music3` en la pantalla deseada.

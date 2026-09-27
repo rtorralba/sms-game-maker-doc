@@ -1,84 +1,85 @@
 ---
-title: Imágenes base. Pantallas
+title: Gráficos. Pantallas Completas y HUD
+description: Qué pantallas puedes añadir a tu juego, qué tamaños usar y cómo personalizar el marcador (HUD)
 ---
 
-Para crear tus juegos para Master System necesitas crear/editar algunas imágenes.
+# Pantallas Completas y Marcador (HUD)
 
-**Pantallas** como la principal, de carga, HUD...
+En tu juego puedes personalizar todas las pantallas principales (el menú de inicio, la introducción, el fin de partida, el final del juego...) y el marcador que muestra las vidas y los objetos en la parte inferior mientras juegas.
 
-Tienes que crear 4 pantallas en SCR en la carpeta assets/screens loading.scr, title.scr, ending.scr y hud.scr.
+Todas estas imágenes se guardan dentro de la carpeta `game/screens/` en formato **PNG**.
 
-Opcionalmente puedes crar también una pantalla para la introducción (intro.scr) y/o game over (gameover.scr)
+---
 
-Recomiendo usar programas especializados como [ZX Paintbrush](https://sourcesolutions.itch.io/zx-paintbrush).
+## 1. Pantalla de Título (`game/screens/title/title.png`)
 
-Tenéis ejemplos en la misma carpeta para simplemente modificar las pantallas existentes y ver que requisitos tienen (tamaño...)
+Es la pantalla principal que aparece nada más encender el juego o reiniciar la partida. El jugador pulsa el **Botón 1** o **Botón 2** para comenzar a jugar. Puedes acompañarla de su propia canción (`music.vgm`).
 
-## Pantallas obligatorias
+<div class="pixel-art-box">
+  <img src="/images/title.png" alt="Pantalla de Título" style="width: 100%; max-width: 512px; height: auto;" />
+</div>
 
-### Carga
+---
 
-Esta imagen (assets/screens/loading.scr) será usada en la pantalla de carga. Es la que se muestra mientras tu juego está cargando.
+## 2. Pantalla de Introducción (`game/screens/intro/intro.png`) [Opcional]
 
-![](/images/loading.png)
+Aparece justo antes de comenzar la primera fase. Puedes usarla para contar la historia del juego, mostrar los controles o dar la bienvenida.
+* Al pulsar cualquier botón, el jugador pasará de inmediato a la partida.
+* Si no quieres incluir una introducción en tu juego, simplemente no pongas esta imagen y el juego arrancará directamente.
 
-### Pantalla principal
+<div class="pixel-art-box">
+  <img src="/images/intro.png" alt="Pantalla de Introducción" style="width: 100%; max-width: 512px; height: auto;" />
+</div>
 
-Esta imagen (assets/screens/title.scr) es la que se muestra nada más cargar el juego y que debe contener las opciones que puede seleccionar el usuario.
+---
 
-1. Teclado
-2. Kempston
-3. Sinclair
-4. Redefine (Si lo has habilitado en la [configuración](/doc/03_tiled/general-configuration))
+## 3. Pantalla de Fin de Partida (`game/screens/gameover/gameover.png`) [Opcional]
 
-Nos ayudaría bastante que en la pantalla de inicio añadieras nuestro logo. Puedes encontrar una versión para spectrum [aquí](/images/logo_spectrum.png)
+Aparece cuando el personaje pierde todas sus vidas o energía. Al pulsar cualquier botón, el juego vuelve automáticamente a la pantalla de título.
 
-![](/images/title.png)
+<div class="pixel-art-box">
+  <img src="/images/gameover.png" alt="Pantalla de Game Over" style="width: 100%; max-width: 512px; height: auto;" />
+</div>
 
-### Ending
+---
 
-Esta imagen (assets/screens/ending.scr) se mostrará cuando el usuario se pase el juego.
+## 4. Pantalla de Victoria / Final (`game/screens/ending/ending.png`)
 
-![](/images/ending.png)
+Se muestra cuando el jugador supera con éxito la última fase del juego y cumple los objetivos de victoria. Puedes añadirle música de créditos (`music.vgm`).
 
-### HUD
+<div class="pixel-art-box">
+  <img src="/images/ending.png" alt="Pantalla de Victoria" style="width: 100%; max-width: 512px; height: auto;" />
+</div>
 
-Esta imagen (assets/screens/hud.scr) se mostrará debajo de tu juego para indicarle al usuario cuanta vida le queda y cuantas llaves e items ha recolectado.
+---
 
-Tiene el mismo tamaño que las anteriores pero solo necestas diseñar la parte de abajo.
+## 5. El Marcador del Juego (HUD)
 
-![](/images/hud.png)
+El marcador es la franja situada en la parte inferior de la pantalla mientras juegas:
 
-#### Cambiar la posición de los elementos del HUD
-Para cambiar la posición de los elementos del HUD, vida, munición, llaves, marcador... Solo tienes que abrir el fichero assets/screens/hud.tmx com en Tiled y mover dichos elementos de la capa de objetos a donde queráis que imprima esos datos.
+<div class="pixel-art-box">
+  <img src="/images/hud.png" alt="Marcador HUD de Master System (ampliado 3x)" style="width: 100%; max-width: 768px; height: auto;" />
+</div>
 
-![](/images/hud_positioning.png)
+### Cómo Mover los Elementos del Marcador
+Puedes cambiar de sitio el número de vidas, las llaves, la munición, etc. de forma completamente visual:
 
-Para saber que es cada cosa le hemos puesto distintos colores a cada elemento y la inicial.
+1. Abre el archivo **`game/screens/hud/hud.tmx`** con Tiled o en tu editor de mapas.
+2. En la capa de objetos verás unas letras de colores que marcan dónde se dibuja cada dato:
+   * **`L`:** Posición del número de **Vidas / Salud**.
+   * **`A`:** Posición del número de **Munición**.
+   * **`K`:** Posición del número de **Llaves**.
+   * **`I`:** Posición del número de **Ítems** recogidos.
+   * **`F`:** Posición del combustible del **Jetpack**.
+   * **`S`:** Posición de la **Puntuación** (Score).
+   * **`M`:** Posición de los **Mensajes** de ayuda o texto.
+3. Arrastra la letra a la casilla del marcador donde quieras que aparezca ese número y guarda el archivo.
 
-![](/images/hud-tileset.png)
+---
 
-* L -> Life (3 caracteres)
-* A -> Ammo (3 caracteres)
-* K -> Keys (2 caracteres)
-* S -> Score (5 caracteres)
-* I -> Items (2 caracteres)
-* M -> Messages (2 líneas de 8 caracteres)
-* F -> Fuel (3 caracteres)
+## 6. Tamaños Recomendados: Master System y Game Gear
 
-## Pantallas opcionales (Sólo 128K)
-
-Las siguientes pantallas no son obligatorias y solo funcionarán en la versión 128K (128Kenabled)
-
-### Intro
-
-Esta pantalla (assets/screens/intro.scr) se mostrará cuando el usuario elija la opción de control para jugar antes de que se inicie el juego, para contrinuar con el juego el usuario deberá pulsar intro. Si no está este fichero en la carpeta assets/screens el motor considerará que no está habilitada y el juego iniciará de inmediato.
-
-![](/images/intro.png)
-
-### Game over
-
-Esta pantalla (assets/screens/gameover.scr) se mostrará cuando nos maten en el juego antes de volver al menú principal y el usuario deberá pulsar enter para que este se muestre. Si no está este fichero en la carpeta assets/screens el motor considerará que no está habilitada y el juego mostrará el habitoal texto de GAME OVER en mitad de la pantalla y esperara al enter también.
-
-![](/images/gameover.png)
-
+* **SEGA Master System:** Las pantallas completas miden **256×192 píxeles** (y el HUD mide 256×16 píxeles).
+* **SEGA Game Gear:** La pantalla de Game Gear es más pequeña (**160×144 píxeles**):
+  * Si dejas tus imágenes en 256×192 píxeles, el programa las centrará automáticamente en la pantalla de Game Gear.
+  * Si prefieres que encajen al milímetro en Game Gear, puedes crear una versión de 160×144 píxeles añadiendo `_gg` al nombre (por ejemplo, `title_gg.png` o `hud_gg.png`).

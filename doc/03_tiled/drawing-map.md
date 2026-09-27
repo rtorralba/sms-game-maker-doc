@@ -1,41 +1,42 @@
 ---
-title: Diseñando el juego. Dibujando el mapa
+title: Diseñando el Juego. Dibujando el Escenario
+description: Técnicas de dibujo, capas y colocación de elementos en el editor integrado y en Tiled
 ---
 
-## Uso básico de Tiled
+# Dibujando el Escenario
 
-Usar Tiled es muy sencillo e intuitivo y tienes una documentación muy completa sobre ello [https://doc.mapeditor.org/en/stable/](https://doc.mapeditor.org/en/stable/). Aún así os dejamos unos tips muy básicos:
+El diseño de cada nivel se organiza mediante **dos capas principales**, asegurando la separación nítida entre la geometría física del mapa y los objetos interactivos.
 
-Para pintar tiles en el mapa es necesitas tener la capa map seleccionada y después seleccionar alguna herramienta de inserción como la brocha de estampar o la herramienta de rellenado.
+---
 
-![](/images/herramientas_añadir_tiles.png)
+## 1. Las Dos Capas de Trabajo
 
-Para añadir los enemigo, los puntos como de fin de trayecto del mismo (movimiento) o de inicio del protagonista, deberás tener la capa objects seleccionada y usar una de las herramientas de añadir.
+1. **Capa `Map` (Patrones de Fondo 8×8):**
+   * Es la capa donde se pinta la geometría del nivel: bloques sólidos, suelos, techos, plataformas atravesables, escaleras, decorados de fondo, pinchos/daño, puertas y objetos recogibles (items, llaves, vida, munición).
+2. **Capa `Sprites` / `Objects` (Entidades Móviles 16×16):**
+   * Es la capa donde se sitúan las entidades dinámicas: el punto de inicio del protagonista (`mainCharacter`), enemigos (`ZXSGMEnemy`), plataformas móviles (`platform`), punteros de ruta (`ZXSGMPointer`) y marcadores de música/texto.
 
-![](/images/herramientas_insertar_en_cap_objects.png)
+> [!TIP]
+> En el **Editor de Mapas Integrado**, el panel superior derecho **«Capas»** te permite conmutar entre la capa `Map` y la capa `Sprites` con un solo clic o alternar su visibilidad con el icono del ojo `👁️`.
 
-## Consideraciones generales
+---
 
-### Filas uniformes
+## 2. Herramientas de Dibujo en el Editor Integrado
 
-Los mapas tiene que tener todas las filas con el mismo número de columnas, por ejemplo, si nuestro mapa tiene 2 "pisos" y en la planta baja hay 5 habitaciones, todos los pisos deben de tener 5 habitaciones. Si no puede acceder el usuario no pasa nada, las rellenas con el primer tile (fondo) y ya está.
+* **Pincel (Atajo `B`):** Permite colocar el tile o sprite seleccionado sobre el mapa manteniendo presionado el botón izquierdo del ratón.
+* **Bote de Pintura / Relleno (Atajo `F`):** Rellena rápidamente una zona contigua de tiles idénticos (muy útil para pintar cielos o muros macizos).
+* **Borrador (Atajo `E`):** Borra tiles restaurando el tile de fondo 0, o elimina entidades en la capa de sprites.
+* **Selección (Atajo `V`):** Permite hacer clic sobre cualquier objeto o enemigo existente para inspeccionar y modificar sus propiedades en el panel lateral derecho.
+* **Previsualización de Animación:** Haz clic en el botón de reproducción `▶` en la barra superior para ver en tiempo real cómo oscilan los tiles animados (`animated` y `animated-damage`) con el intervalo configurado en `animatePeriodTile`.
 
-Ejemplo com filas distintas (incorrecto):
+---
 
-![](/images/mapa_filas_distintas.png)
+## 3. Reglas de Diseño y Consistencia de Mapa
 
-El mismo ejemplo con filas uniformes, todas las filas tienen las mismas "habitaciones"
-
-![](/images/mapa_filas_iguales.png)
-
-### Habitaciones completas
-
-Las habitaciones tiene que estar completas, no se pueden diseñar habitaciones que les falten tiles o por ejemplo 2 habitaciones y media.
-
-## Crear capas
-
-Necesitamos 2 capas, una para pintar nuestro escenario y otra para situar los elementos, como enemigos, en el mismo.
-
-![](/images/layers.png)
-
-
+1. **Pantallas Completas y Uniformes:**
+   * Cada pantalla debe abarcar su cuadrícula íntegra (32×22 en Master System o 20×16 en Game Gear). No se admiten fracciones de pantalla.
+   * Si una fase cuenta con múltiples pisos o alturas verticales, todas las filas deben tener el mismo ancho de columnas para garantizar transiciones de scroll vertical coherentes.
+2. **Punto de Spawn del Protagonista (`mainCharacter`):**
+   * Cada fase debe contener exactamente un objeto `mainCharacter` situado en el punto exacto donde comenzará el jugador al iniciar el nivel o revivir tras perder una vida.
+3. **Continuidad de Fondo:**
+   * Al diseñar zonas con llaves o items, ten en cuenta que cuando el jugador los recoja, el motor los reemplazará dinámicamente por el tile de la fila superior (`y - 1`). Coloca un tile de fondo uniforme encima de los objetos para que el escenario luzca siempre continuo.

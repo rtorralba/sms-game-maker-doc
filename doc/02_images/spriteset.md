@@ -1,64 +1,58 @@
 ---
-title: Imágenes base. Spriteset
+title: Gráficos. Personajes y Enemigos (Spriteset)
+description: Cómo crear y organizar la imagen sprites.png con las animaciones del protagonista y los enemigos
 ---
 
-Debes crear/editar el fichero assets/sprites.zxp de 256x32px añadiendo tus sprites (personaje, enemigos...) y donde cada uno de estos tendrá una dimensión de 16x16px.
+# Personajes y Enemigos (`sprites.png`)
 
-Los sprites no tienen color, con lo que solo tienes que dibujarlos usando paper negro y ink blanco.
+La imagen **`game/stage_1/sprites.png`** contiene los dibujos de todos los personajes que se mueven por la pantalla: el protagonista, sus animaciones al caminar o saltar, las plataformas móviles y los enemigos.
 
-## Primera fila
+---
 
-### Vista lateral (Plataformas)
+## 1. Tamaño y Características de la Imagen
 
-Los primeros 8 sprites están reservados para la animación del protagonista:
-* Los 2 primeros para el movimiento hacia la derecha
-* El 3ª frame hacia la derecha extra si la opción **mainCharacterExtraFrame** está activada. 
-* El 4º para el salto hacia la derecha.
-* El 5º y 6º siguientes para el movimiento hacia la izquierda.
-* El 7º El 3ª frame hacia la izquierda extra si la opción **mainCharacterExtraFrame** está activada. 
-* El 8º para el salto hacia la izquierda.
-* 9º y 10º Plataforma 1
-* 11º y 12º Plataforma 2 o animación prota escaleras si la opción está activada.
-* 13º y 14º Animación idle del personaje si la opción **idleTime** es distinta de 0 o Plataforma 3
-* 15º Graveyard, imagen que aparece en el modo vidas si el mismo está activado.
-* El 16, se usará para mostrar la explosión del enemigo cuando lo mates.
+* **Tamaño del archivo:** Imagen PNG de **256×48 píxeles**.
+* **Tamaño de cada personaje:** Cada personaje mide **16×16 píxeles** (hay 16 casillas por fila y 3 filas en total).
+* **Fondo transparente:** Todo lo que rodea a los personajes debe ser transparente para que se vea el escenario por detrás.
 
-![](/images/sprites.png)
+<div class="pixel-art-box">
+  <img src="/images/sprites.png" alt="Spriteset de personajes y enemigos (ampliado 3x)" style="width: 100%; max-width: 768px; height: auto;" />
+</div>
 
-### Vista cenital
+---
 
-Los primeros 8 sprites están reservados para la animación del protagonista:
-* 1 y 2 movimiento hacia la derecha.
-* 3 y 4 movimiento hacia la izquierda.
-* 5 y 6 movimiento hacia arriba.
-* 7 y 8 movimiento hacia abajo.
-* 9 - 15 libres
+## 2. Organización de las 3 Filas de Personajes
 
-El último sprite, el 16, se usará para mostrar la explosión del enemigo cuando lo mates.
+Para que el juego sepa qué dibujo usar en cada momento, los sprites están ordenados en 3 filas:
 
-## Segunda fila
-Los 16 sprites de la segunda fila se usarán para los enemigos, 2 para cada enemigo, 2 frames de animación, es decir, podrás definir un total de 8 enemigos. Tiene que dibujar solamente los frames del enemigo hacia la derecha.
+```
+Fila 1 (Casillas  0 al 15): Protagonista, plataformas móviles, escaleras y explosión
+Fila 2 (Casillas 16 al 31): Enemigos caminando hacia la DERECHA (8 tipos × 2 dibujos cada uno)
+Fila 3 (Casillas 32 al 47): Enemigos caminando hacia la IZQUIERDA (8 tipos × 2 dibujos cada uno)
+```
 
-![](/images/sprites_cenital.png)
+---
 
-## Tercera fila. Enemigos hacia la izquierda
+## 3. ¿Qué Va en Cada Casilla de la Primera Fila?
 
-La tercera fila es para los enemigos cuando van hacia la izquierda.
+* **Casillas 0, 1 y 2:** El protagonista **caminando hacia la derecha** (3 dibujos de animación paso a paso).
+* **Casilla 3:** El protagonista **saltando hacia la derecha**.
+* **Casillas 4, 5 y 6:** El protagonista **caminando hacia la izquierda**.
+* **Casilla 7:** El protagonista **saltando hacia la izquierda**.
+* **Casillas 8 y 9:** Los dibujos de la **plataforma móvil** (la plataforma que lleva al jugador encima).
+* **Casillas 10 y 11:** El protagonista **subiendo o bajando escaleras** (2 dibujos de escalada).
+* **Casillas 12 y 13:** Animación **quieto / idle** (cuando el personaje pasa unos segundos sin moverse, mira al frente y parpadea).
+* **Casilla 14:** Sprite de **lápida / muerte** (si en las opciones activas el modo de vidas con cementerio).
+* **Casilla 15:** La animación de **explosión** que aparece cuando derrotas a un enemigo.
 
-Si el tipo de movimiento del enemigo es **noReturn**, en un solo sentido, el primer sprite correspondiente hacia la izquierda se considerará el frame de inicio de animación y en segundo de fin.
+---
 
-Si simplemente es el mismo sprite pero volteado a la izquierda puedes hacerlo facilmente con ZX Paintbrush.
+## 4. Las Filas de Enemigos (Filas 2 y 3)
 
-* Seleccionas el sprite con la herramienta de selección de 16x16.
-* Copias (Ctrl+C) y pegas el sprite en la fila de abajo (Ctrl+V).
-* Después seleccionas la opción de menú Edit -> Flip Horizontally -> Flip Horizontal Pixels
+Puedes incluir hasta **8 enemigos distintos** en tu fase:
+* Cada enemigo tiene **2 dibujos de animación** para cuando camina hacia la derecha (en la fila 2).
+* Y sus correspondientes **2 dibujos** cuando camina hacia la izquierda (en la fila 3).
 
-![](/images/flip_horizontally.png)
-
-Si vienes de una versión anterior donde no se definía una 3ª fila y no sabes como añadirla, solo tendremos de aumentar el tamaño en altura de 32 a 48 diciendole que crezca hacía abajo. Para hacerlo desde ZX Paintbrush iremos al menú View -> Resize picture y en **Select dest. orientation** seleccionaremos la 2ª opción y en **height pondremos 48**
-
-![](/images/zx-paintbrush-resize-picture-menu.png)
-![](/images/zx-paintbrush-resize-picture-options.png)
-
-Nota: Cuando modifiques el fichero sprites.zxp desde ZX Painbrush, el mismo se actualizará en Tiled automáticamente.
-
+> [!TIP]
+> **Enemigos que solo van en una dirección (tipo misil o proyectil):**
+> Si configuras un enemigo de tipo `noReturn` (unidireccional), el primer dibujo se usará como punto de disparo/salida, el segundo como el proyectil en vuelo y el tercero como el impacto al final del camino.

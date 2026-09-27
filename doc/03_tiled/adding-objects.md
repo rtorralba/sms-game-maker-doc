@@ -1,97 +1,58 @@
 ---
-title: Diseñando el juego. Añadiendo objetos
+title: Diseñando el Juego. Añadiendo Objetos e Ítems
+description: Colocación de items coleccionables, llaves, puertas, vida, munición y tiles especiales
 ---
 
-Los tiles que representan objetos se tendran que situar los 4 últimos del sprite set (187, 189, 190, 191).
+# Añadiendo Objetos, Puertas e Ítems
 
-Estos tiles cogeran el color de fondo del tile que esté situado a la izquierda para que se pueda "mimetizar" con cualquier color.
+En **SMS Game Maker**, los objetos interactivos, puertas y coleccionables se sitúan directamente en la capa de mapa (`Map`) utilizando los tiles correspondientes del tileset.
 
-## Item
+---
 
-Este es el objeto que el protagonista deberá ir recogiendo por todo el juego para finalizar el mismo (Es configurable).
+## 1. Catálogo de Objetos Recogibles
 
-Tienes que seleccionar el tile que quieras usar para este fin, por ejemplo en el juego de Krilin la daga, y poner que el tipo de el mismo es **item**.
+| Tile | Objeto | Clase en Tiled | Efecto al Contacto |
+| :---: | :--- | :---: | :--- |
+| **187** | **Munición** | `ammo` | Suma la cantidad `ammoIncrement` a la munición disponible del protagonista. |
+| **188** | **Dash** | `dash` | Desbloquea la habilidad de impulso rápido si no estaba activa desde el inicio. |
+| **189** | **Vida** | `life` | Restaura `lifeAmount` puntos de salud al protagonista. |
+| **190** | **Ítem de Fase** | `item` | Suma 1 ítem al contador para cumplir el objetivo de victoria (`goalItems`). |
+| **191** | **Llave** | `key` | Añade 1 llave al inventario (`currentKeys`) para abrir puertas cerradas. |
+| **186** | **Disparador de Texto** | `ZXSGMText` | Despliega un cuadro de diálogo con el texto configurado. |
 
-Para ello haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees (la daga por ejemplo) y escribe **item** en la casilla Class.
+> [!TIP]
+> **Preservación Estética del Fondo (Sustitución por `y - 1`):**
+> Cuando el protagonista recoge cualquier objeto o ítem del escenario, el motor no deja un agujero negro o vacío en su lugar; consulta automáticamente el tile situado en la fila superior (`y - 1`) y lo estampa en la casilla, conservando el cielo, la pared o la textura del fondo de forma impecable.
 
-![](/images/type_item.png)
+---
 
-## Puerta que necesita llave
+## 2. Tipos de Puertas
 
-Este tile será considerado sólido para el protagonista. deberás tener al menos una **key** para abrir la puerta y cuando lo hagas se te restará de tu inventario.
+Las puertas bloquean el paso hasta que se cumple una condición concreta:
 
-Para setear un tile de este tipo haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees y escribe **door** en la casilla Class. El tile de este tipo tiene que ser sólido, del 2 al 64.
+* **Puerta de Llaves (Tile 62 - `TILE_DOOR_KEYS`):**
+  Actúa como muro sólido. Si el jugador hace contacto teniendo al menos una llave (`currentKeys > 0`), se consume una llave con sonido `SFX_DOOR` y todos los tiles de la puerta en la pantalla desaparecen de forma permanente.
+* **Puerta de Ítems (Tile 61 - `TILE_DOOR_ITEMS`):**
+  Permanece cerrada hasta que el jugador recoge el número de ítems configurado en `itemsToOpenDoors` en las propiedades de la fase. Al alcanzar esa cifra, se abre automáticamente.
+* **Puerta de Enemigos (Tile 63 - `TILE_DOOR_ENEMIES`):**
+  Permanece cerrada mientras haya enemigos activos en la pantalla. Al derrotar al último enemigo, la puerta se abre de inmediato.
 
-Después ya puedes añadirlo a tu mapa arrastrándolo.
+---
 
-![](/images/type_door.png)
+## 3. Bloques Rompibles
 
-## Llave
+* **Bloque Rompible por Contacto (Tile 59):**
+  Se activa mediante la propiedad `useBreakableTileByTouch`. Cuando el protagonista pisa el bloque, se inicia una cuenta atrás de 30 frames (~0.5s). Al terminar, el bloque se destruye con sonido `SFX_DAMAGE` y se reemplaza por el tile superior (`y - 1`), haciendo caer al jugador si estaba apoyado.
+* **Bloque Rompible por Disparo (Tile 60):**
+  Se destruye al ser alcanzado por una bala del jugador (`shooting = true`).
 
-Como habrás podido ver en el párrafo anterior, necesitas el objeto **key** para abrir las puertas.
+---
 
-Para setear un tile de este tipo haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees y escribe **key** en la casilla Class.
+## 4. Tiles de Daño y Animación
 
-Después ya puedes añadirlo a tu mapa arrastrándolo.
-
-![](/images/type_key.png)
-
-## Munición
-
-Este objeto permitirá al personaje restablecer la cantidad de munición que hayas especificado en el valor de la configuración **ammoIncrement** solo si has especificado un valor de munición inicial (**ammo**) no infinita (-1).
-
-![](/images/type_ammo.png)
-
-## Puerta que necesita que mates a todos los enemigos
-
-Para utilizar esta puerta debes habilitar la opción **shouldKillEnemies**. El tile nº 64 (el último de la segunda fila), esta designado para añadir este tipo de puerta, solo añadirlo a tu mapa arrastrándolo. Deberás matar a todos los enemigos para abrir la puerta.
-
-Para setear un tile de este tipo haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees y escribe **ammo** en la casilla Class.
-
-Después ya puedes añadirlo a tu mapa arrastrándolo.
-
-![](/images/type_enemy_door.png)
-
-## Vida
-
-Este objeto permitirá al personaje restablecer una cantidad de vida (configurable).
-
-Para setear un tile de este tipo haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees y escribe **life** en la casilla Class.
-
-Después ya puedes añadirlo a tu mapa arrastrándolo.
-
-![](/images/type_life.png)
-
-## Tile de daño
-
-Este tipo de tile dañará al personaje principal cuando lo toque y este saldrá rebotado.
-
-Para setear un tile de este tipo haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees y escribe **damage** en la casilla Class.
-
-**Importante** solo puedes marcar tiles de daño **tiles no sólidos**, es decir, después de las plataformas traspasables, a partir del tile 78.
-
-## Tiles animados
-
-En ocasiones le da un aspecto más agradable que los escenarios tengan ciertos tiles animados, por ejemplo, unas velas a las que se le mueven las llamas.
-
-Para ello deberás tener preparado tu tileset con el tile que tengas pensado animar y justamente el siguiente tile sea el frame al que se intercambiará para simular el movimiento.
-
-Para setear un tile de este tipo haz clic en la rueda dentada de propiedades del tileset, selecciona el tile que desees y escribe **animated** en la casilla Class.
-
-Sólo se animarán 10 tiles por pantalla.
-
-![](/images/tileset_con_tiles_animados.png)
-
-![](/images/velas_animadas.gif)
-
-## Tiles de daño animados
-
-A veces es interesante setear un tile con las dos propiedades anteriores, que hagan daño y que sean animados, por ejemplo una lava que tiene que dañar al protagonista y se tiene que mover. En este caso la el tipo o class (en las nievas versiones le han llamado class) ha de ser **animated-damage**.
-
-Como pasaba con los tiles de daño, solo puedes marcar tiles de "daño animados" **tiles no sólidos**, es decir, después de las plataformas traspasables, a partir del tile 78.
-
-![](/images/tile_animated_damage.png)
-
-![](/images/lava_animada.gif)
-
-
+* **Tiles de Peligro / Daño (`damage`):**
+  Pinchos, trampas o ácido. Al tocarlos, el protagonista sufre `damageAmount` puntos de daño y es repelido.
+* **Tiles Animados (`animated`):**
+  Pintan elementos con movimiento (antorchas, cascadas, agua). Deben diseñarse en parejas de tiles contiguos en el tileset (`tiles.png`). El motor conmuta alternativamente entre el frame base y el siguiente según la cadencia `animatePeriodTile`.
+* **Tiles de Daño Animados (`animated-damage`):**
+  Combinan ambos comportamientos (por ejemplo, lava ardiente que se mueve periódicamente y quema al contacto).

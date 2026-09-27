@@ -1,0 +1,24 @@
+/* Estilos personalizados para pixel art y gráficos retro */
+.pixel-art {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+.pixel-art-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: #181825;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  margin: 16px 0;
+  overflow-x: auto;
+}
+
+.pixel-art-box img {
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
