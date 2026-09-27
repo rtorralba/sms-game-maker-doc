@@ -13,8 +13,8 @@ hero:
       text: "📖 Leer Documentación"
       link: /doc/
     - theme: alt
-      text: "⚡ Guía de Instalación"
-      link: /doc/01_install/install
+      text: "🚀 Cómo Empezar"
+      link: /doc/01_install/getting-started
 
 features:
   - title: 🎮 Multiplataforma SMS & Game Gear

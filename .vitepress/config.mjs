@@ -31,8 +31,9 @@ export default defineConfig({
           ]
         },
         {
-          text: 'Instalación',
+          text: 'Comenzando',
           items: [
+            { text: 'Cómo empezar', link: '/doc/01_install/getting-started' },
             { text: 'Guía de instalación', link: '/doc/01_install/install' }
           ]
         },

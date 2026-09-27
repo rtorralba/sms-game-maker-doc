@@ -9,10 +9,11 @@ Bienvenido a la documentación oficial de **SMS Game Maker**, la herramienta int
 
 ---
 
-## 1. Visión General e Instalación
+## 1. Visión General y Primeros Pasos
 
+- [Cómo empezar](./01_install/getting-started): Guía rápida paso a paso para descargar el ejemplo base y arrancar tu juego.
+- [Herramientas e Instalación](./01_install/install): Compilador SDCC, editores de mapas, emuladores y LibreSprite.
 - [Créditos y Agradecimientos](./00_Overview/credits)
-- [Guía de Instalación](./01_install/install): Compilador SDCC, Tiled, emuladores (Emulicious y Mesen 2) y herramientas gráficas.
 
 ---
 
