@@ -22,7 +22,7 @@ Para crear tu propio videojuego en **SMS Game Maker**, la forma más rápida y r
 
 ### Paso 2: Descargar SMS Game Maker Studio
 Es el programa desde donde controlarás todo tu proyecto:
-1. Descarga la versión ejecutable desde [juntelart.itch.io/sms-game-maker](https://juntelart.itch.io/sms-game-maker).
+1. Descarga la última versión desde [juntelart.itch.io/sms-game-maker](https://juntelart.itch.io/sms-game-maker).
 2. Descomprime el archivo en la carpeta que prefieras de tu ordenador.
 
 ### Paso 3: Descargar y Descomprimir el Proyecto de Ejemplo
