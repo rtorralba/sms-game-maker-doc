@@ -7,6 +7,10 @@ description: Guía rápida paso a paso para poner en marcha tu primer juego part
 
 Para crear tu propio videojuego en **SMS Game Maker**, la forma más rápida y recomendada es **partir del proyecto base de ejemplo**, que ya viene completamente configurado con toda la estructura de carpetas, pantallas, tilesets, personajes y mapas listos para probar y modificar.
 
+> [!TIP]
+> **Comunidad y Soporte:**
+> Si tienes dudas durante tus primeros pasos o quieres compartir tus creaciones, únete a nuestro **[Grupo de Telegram](https://t.me/sms_game_maker)**.
+
 ---
 
 ## 1. Los 4 Pasos Básicos

@@ -15,6 +15,9 @@ hero:
     - theme: alt
       text: "🚀 Cómo Empezar"
       link: /doc/01_install/getting-started
+    - theme: alt
+      text: "💬 Grupo de Telegram"
+      link: https://t.me/sms_game_maker
 
 features:
   - title: 🎮 Multiplataforma SMS & Game Gear

@@ -6,6 +6,9 @@ export default defineConfig({
   description: "A simple game maker for SMS and GG games.",
   base: '/',
   cleanUrls: true,
+  head: [
+    ['link', { rel: 'icon', href: '/images/favicon.jpg' }]
+  ],
   vite: {
     server: {
       watch: {
@@ -80,7 +83,7 @@ export default defineConfig({
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/rtorralba/sms-game-maker' }
+      { icon: 'telegram', link: 'https://t.me/sms_game_maker' }
     ]
   }
 })
