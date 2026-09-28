@@ -33,7 +33,7 @@ Para no tener que crear carpetas ni configurar archivos desde cero, descarga la 
 ### Paso 4: Abrir el Proyecto y Modificarlo
 1. Abre **`SMSGameMakerStudio.exe`** (o ejecuta `gui.bat`).
 2. En la aplicación, haz clic en **«Abrir Proyecto»** y selecciona la carpeta del ejemplo que acabas de descomprimir.
-3. Haz clic en **«🗺️ Abrir Mapa»** para ver y modificar las pantallas del nivel en el editor visual.
+3. Haz clic en **«🗺️ Editor de Mapa»** para ver y modificar las pantallas del nivel en el editor visual.
 4. Pulsa **«⚡ Compilar SMS»** o **«🎮 Compilar GG»** para generar tu primera ROM en la carpeta `dist/`.
 
 ---
