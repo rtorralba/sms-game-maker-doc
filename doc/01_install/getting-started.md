@@ -31,8 +31,8 @@ Para no tener que crear carpetas ni configurar archivos desde cero, descarga la 
 * Descomprime el archivo ZIP en tu ordenador (obtendrás una carpeta con el juego de ejemplo).
 
 ### Paso 4: Abrir el Proyecto y Modificarlo
-1. Abre **`SMSGameMakerStudio.exe`** (o ejecuta `gui.bat`).
-2. En la aplicación, haz clic en **«Abrir Proyecto»** y selecciona la carpeta del ejemplo que acabas de descomprimir.
+1. Abre **`SMSGameMaker.exe`**.
+2. En la aplicación, haz clic en **«Examinar»** y selecciona la carpeta del ejemplo que acabas de descomprimir.
 3. Haz clic en **«🗺️ Editor de Mapa»** para ver y modificar las pantallas del nivel en el editor visual.
 4. Pulsa **«⚡ Compilar SMS»** o **«🎮 Compilar GG»** para generar tu primera ROM en la carpeta `dist/`.
 
@@ -68,10 +68,10 @@ proyecto_juego/
 
 ### Carpeta `screens/` (Pantallas Globales)
 Contiene las imágenes de interfaz comunes a todo el juego:
-* **`title/`:** La portada que aparece al encender la consola.
+* **`title/`:** La pantalla de presentación que aparece al iniciar el juego.
 * **`intro/`:** La pantalla que se muestra antes del primer nivel para contar la historia o dar instrucciones.
 * **`gameover/`:** La pantalla de derrota cuando se agotan las vidas.
-* **`ending/`:** La pantalla final de felicitación o créditos al terminar la última fase.
+* **`ending/`:** La pantalla final de felicitación o créditos al terminar el juego.
 * **`hud/`:** El marco inferior del marcador (`hud.png`) y el archivo `hud.tmx` donde colocas la posición de los números de vidas, munición, llaves e ítems.
 
 ### Carpetas de Fases (`stage_1/`, `stage_2/`...)
