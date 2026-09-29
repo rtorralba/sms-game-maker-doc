@@ -13,7 +13,7 @@ Todas estas imágenes se guardan dentro de la carpeta `game/screens/` en formato
 
 ## 1. Pantalla de Título (`game/screens/title/title.png`)
 
-Es la pantalla principal que aparece nada más encender el juego o reiniciar la partida. El jugador pulsa el **Botón 1** o **Botón 2** para comenzar a jugar. Puedes acompañarla de su propia canción (`music.vgm`).
+Es la pantalla principal que aparece nada más iniciar el juego o reiniciar la partida. El jugador pulsa el **Botón 1** o **Botón 2** para comenzar a jugar. Puedes acompañarla de su propia música (`music.vgm`).
 
 <div class="pixel-art-box">
   <img src="/images/title.png" alt="Pantalla de Título" style="width: 100%; max-width: 512px; height: auto;" />
@@ -36,6 +36,8 @@ Aparece justo antes de comenzar la primera fase. Puedes usarla para contar la hi
 ## 3. Pantalla de Fin de Partida (`game/screens/gameover/gameover.png`) [Opcional]
 
 Aparece cuando el personaje pierde todas sus vidas o energía. Al pulsar cualquier botón, el juego vuelve automáticamente a la pantalla de título.
+* Al pulsar cualquier botón, el jugador volverá a la pantalla de título.
+* Si no quieres incluir una pantalla de fin de partida, simplemente no pongas esta imagen y el juego volverá a la pantalla de título.
 
 <div class="pixel-art-box">
   <img src="/images/gameover.png" alt="Pantalla de Game Over" style="width: 100%; max-width: 512px; height: auto;" />
@@ -46,6 +48,7 @@ Aparece cuando el personaje pierde todas sus vidas o energía. Al pulsar cualqui
 ## 4. Pantalla de Victoria / Final (`game/screens/ending/ending.png`)
 
 Se muestra cuando el jugador supera con éxito la última fase del juego y cumple los objetivos de victoria. Puedes añadirle música de créditos (`music.vgm`).
+* Al pulsar cualquier botón, el jugador volverá a la pantalla de título.
 
 <div class="pixel-art-box">
   <img src="/images/ending.png" alt="Pantalla de Victoria" style="width: 100%; max-width: 512px; height: auto;" />
@@ -66,13 +69,15 @@ Puedes cambiar de sitio el número de vidas, las llaves, la munición, etc. de f
 
 1. Abre el archivo **`game/screens/hud/hud.tmx`** con Tiled o en tu editor de mapas.
 2. En la capa de objetos verás unas letras de colores que marcan dónde se dibuja cada dato:
-   * **`L`:** Posición del número de **Vidas / Salud**.
-   * **`A`:** Posición del número de **Munición**.
-   * **`K`:** Posición del número de **Llaves**.
-   * **`I`:** Posición del número de **Ítems** recogidos.
-   * **`F`:** Posición del combustible del **Jetpack**.
-   * **`S`:** Posición de la **Puntuación** (Score).
-   * **`M`:** Posición de los **Mensajes** de ayuda o texto.
+   * **`L` (life):** Posición del número de **Vidas / Salud**.
+   * **`A` (ammo):** Posición del número de **Munición**.
+   * **`K` (keys):** Posición del número de **Llaves**.
+   * **`I` (items):** Posición del número de **Ítems** recogidos.
+   * **`F` (fuel):** Posición del combustible del **Jetpack**.
+   * **`S` (score, rojo):** Posición de la **Puntuación** (Score).
+   * **`M` (messages):** Posición de los **Mensajes** de ayuda o texto.
+   * **`S` (stage, blanco):** Posición del **Nivel** actual.
+   * **`T` (timer):** Posición del **Tiempo** que nos queda.
 3. Arrastra la letra a la casilla del marcador donde quieras que aparezca ese número y guarda el archivo.
 
 ---
