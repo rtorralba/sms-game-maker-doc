@@ -5,7 +5,7 @@ description: Cómo crear el archivo tiles.png y para qué sirve cada casilla del
 
 # Tileset de Escenario (`tiles.png`)
 
-Para diseñar el escenario de cada fase (suelos, muros, escaleras, plataformas y puertas), cada nivel cuenta con su archivo **`tiles.png`** (por ejemplo, `game/stage_1/tiles.png`).
+Para diseñar el escenario de cada fase (suelos, muros, escaleras, plataformas, puertas, items y decorado), cada nivel cuenta con su archivo **`tiles.png`** (por ejemplo, `game/stage_1/tiles.png`).
 
 ---
 
