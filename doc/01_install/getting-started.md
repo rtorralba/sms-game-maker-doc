@@ -20,7 +20,7 @@ Para crear tu propio videojuego en **SMS Game Maker**, la forma más rápida y r
 1. Descarga el instalador para Windows desde [sdcc.sourceforge.net](https://sdcc.sourceforge.net/).
 2. Ejecuta el instalador y asegúrate de dejar marcada la opción **"Add to PATH"** (marcada por defecto).
 
-### Paso 2: Descargar SMS Game Maker Studio
+### Paso 2: Descargar SMS Game Maker
 Es el programa desde donde controlarás todo tu proyecto:
 1. Descarga la última versión desde [juntelart.itch.io/sms-game-maker](https://juntelart.itch.io/sms-game-maker).
 2. Descomprime el archivo en la carpeta que prefieras de tu ordenador.
@@ -86,6 +86,6 @@ Cada fase es independiente y modular, lo que te permite tener ambientaciones, en
 
 ## 4. Próximos Pasos
 
-Una vez tengas el ejemplo abierto en SMS Game Maker Studio:
+Una vez tengas el ejemplo abierto en SMS Game Maker:
 * Consulta la sección **[Editor de Imágenes y Colores](/doc/02_images/image-editor)** para personalizar tus personajes con LibreSprite.
 * Consulta **[Diseñando el Juego](/doc/03_tiled/overview)** para aprender a pintar tus mapas y colocar enemigos con sus rutas de movimiento.
