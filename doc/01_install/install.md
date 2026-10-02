@@ -9,7 +9,7 @@ Para empezar a crear tus propios juegos con **SMS Game Maker**, solo necesitas t
 
 ---
 
-## 1. SMS Game Maker Studio
+## 1. SMS Game Maker
 
 Es el programa principal desde donde gestionarás tus fases, configurarás las opciones y generarás la ROM de tu juego con un solo clic.
 
@@ -27,7 +27,7 @@ Es el programa principal desde donde gestionarás tus fases, configurarás las o
 * **Instalación en Windows:**
   1. Descarga el instalador para Windows (ej. `sdcc-4.x.x-x64-setup.exe`).
   2. Ejecuta el instalador y deja marcada la opción **"Add to PATH"** (viene marcada por defecto).
-  3. ¡Listo! SMS Game Maker Studio detectará automáticamente el compilador al abrir el programa y mostrará un piloto verde con la versión instalada.
+  3. ¡Listo! SMS Game Maker detectará automáticamente el compilador al abrir el programa y mostrará un piloto verde con la versión instalada.
 
 ---
 
@@ -35,13 +35,13 @@ Es el programa principal desde donde gestionarás tus fases, configurarás las o
 
 Para diseñar las pantallas y colocar los bloques y enemigos, tienes dos alternativas:
 
-### Opción A: Editor Integrado (SMS Game Maker Studio)
+### Opción A: Editor Integrado (SMS Game Maker)
 Viene incluido dentro del propio programa. Al hacer clic en **«🗺️ Editor de Mapa»** en la fase que quieras editar, se abrirá el editor web integrado donde puedes dibujar directamente con el ratón.
 
 ### Opción B: Tiled Map Editor
 Si prefieres un editor externo muy potente para diseño de mapas de videojuegos:
 * **Descarga oficial:** [mapeditor.org](https://www.mapeditor.org/)
-* SMS Game Maker Studio detecta si tienes Tiled instalado y te permite abrir tus fases con un solo clic.
+* SMS Game Maker detecta si tienes Tiled instalado y te permite abrir tus fases con un solo clic.
 
 ---
 
