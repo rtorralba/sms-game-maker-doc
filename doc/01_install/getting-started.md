@@ -27,7 +27,7 @@ Es el programa desde donde controlarás todo tu proyecto:
 
 ### Paso 3: Descargar y Descomprimir el Proyecto de Ejemplo
 Para no tener que crear carpetas ni configurar archivos desde cero, descarga la plantilla oficial:
-* 📥 **[Descargar Proyecto Base de Ejemplo (.ZIP)](https://github.com/rtorralba/sms-game-maker-game-example/archive/refs/heads/main.zip)**
+* 📥 **[Descargar Proyecto de Ejemplo (.ZIP)](https://github.com/rtorralba/sms-game-maker-game-example/archive/refs/heads/main.zip)**
 * Descomprime el archivo ZIP en tu ordenador (obtendrás una carpeta con el juego de ejemplo).
 
 ### Paso 4: Abrir el Proyecto y Modificarlo
