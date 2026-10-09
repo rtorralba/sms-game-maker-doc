@@ -15,7 +15,7 @@ Es el programa principal desde donde gestionarás tus fases, configurarás las o
 
 * **Descarga oficial:** [juntelart.itch.io/sms-game-maker](https://juntelart.itch.io/sms-game-maker)
 * **Cómo usarlo:** Solo tienes que descomprimir el archivo y hacer doble clic sobre **`SMSGameMaker.exe`**. No necesitas instalar Python ni nada adicional.
-* **Proyecto de ejemplo base:** Puedes descargar una plantilla de juego completa lista para modificar desde [aquí (ZIP)](https://github.com/rtorralba/sms-game-maker-game-example/archive/refs/heads/main.zip).
+* **Proyecto de ejemplo base:** Puedes descargar una plantilla de juego completa lista para modificar desde [aquí (ZIP)] o  haz clic en **«📥 Descargar Proyecto de Ejemplo»**.
 
 ---
 
