@@ -40,7 +40,7 @@ Para que el juego sepa qué dibujo usar en cada momento, los sprites están orde
 * **Casillas 8 y 9:** Los dibujos de la **plataforma móvil** (la plataforma que lleva al jugador encima).
 * **Casillas 10 y 11:** El protagonista **subiendo o bajando escaleras** (2 dibujos de escalada).
 * **Casillas 12 y 13:** Animación **quieto / idle** (cuando el personaje pasa unos segundos sin moverse, mira al frente y parpadea).
-* **Casilla 14:** Sprite de **lápida / muerte** (si en las opciones activas el modo de vidas con cementerio).
+* **Casilla 14:** Sprite de **lápida / muerte** (si en las opciones activas el modo de vidas).
 * **Casilla 15:** La animación de **explosión** que aparece cuando derrotas a un enemigo.
 
 ---
