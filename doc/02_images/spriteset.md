@@ -25,10 +25,9 @@ La imagen **`game/stage_1/sprites.png`** contiene los dibujos de todos los perso
 
 Para que el juego sepa qué dibujo usar en cada momento, los sprites están ordenados en 3 filas:
 
-Fila 1 (Casillas  0 al 15): Protagonista, plataformas móviles, escaleras y explosión
-Fila 2 (Casillas 16 al 31): Enemigos caminando hacia la DERECHA (8 tipos × 2 dibujos cada uno)
-Fila 3 (Casillas 32 al 47): Enemigos caminando hacia la IZQUIERDA (8 tipos × 2 dibujos cada uno)
-
+* **Fila 1:**: (Casillas  0 al 15): Protagonista, plataformas móviles, escaleras y explosión.
+* **Fila 2:**: (Casillas 16 al 31): Enemigos caminando hacia la DERECHA (8 tipos × 2 dibujos cada uno).
+* **Fila 3:**: (Casillas 32 al 47): Enemigos caminando hacia la IZQUIERDA (8 tipos × 2 dibujos cada uno).
 
 ---
 
