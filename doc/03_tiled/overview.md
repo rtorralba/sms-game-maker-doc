@@ -17,7 +17,7 @@ En **SMS Game Maker**, el diseño de niveles es visual y desacoplado del motor e
 >
 > 📥 **[Descargar Proyecto Base de Ejemplo (.ZIP)](https://github.com/rtorralba/sms-game-maker-game-example/archive/refs/heads/main.zip)**
 >
-> Solo tienes que descargarlo desde el enlace anterior o directamente desde la aplicacion pulsando 📥 **[Descargar Proyecto de Ejemplo**, descomprimirlo y abrirlo en SMS Game Maker.
+> Solo tienes que descargarlo desde el enlace anterior o directamente desde la aplicacion pulsando 📥 **Descargar Proyecto de Ejemplo**, descomprimirlo y abrirlo en SMS Game Maker.
 
 
 ---
