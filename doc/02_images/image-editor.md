@@ -42,6 +42,6 @@ En las consolas Master System y Game Gear, los colores funcionan de forma muy se
 * **Master System:** Cuenta con una gama clásica de 64 colores entre los que elegir los 16 de tu fase.
 * **Game Gear:** Cuenta con una paleta más amplia (4096 colores posibles), por lo que admite más variedad de degradados y tonos.
 
-> [!NOTE]
+> [!NOTA]
 > **Tú solo dibuja:**
 > No necesitas saber códigos de color ni configurar tablas complejas. Simplemente dibuja tus imágenes en formato PNG con tus colores favoritos y SMS Game Maker se encarga de adaptarlos automáticamente al generar la ROM de tu juego.
