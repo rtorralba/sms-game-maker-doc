@@ -65,6 +65,6 @@ Si prefieres trabajar con **Tiled**, SMS Game Maker incluye el archivo de proyec
 | **SEGA Master System** | 256×192 px | **32 tiles de ancho × 22 tiles de alto** | Filas 22 y 23 (32×2 tiles) |
 | **SEGA Game Gear** | 160×144 px | **20 tiles de ancho × 16 tiles de alto** | Filas 16 y 17 (20×2 tiles) |
 
-> [!IMPORTANTE]
+> [¡IMPORTANTE!]
 > **Fases con Scroll Horizontal:**
 > Un nivel puede estar compuesto por múltiples pantallas en horizontal (por ejemplo, 64×22 para 2 pantallas, 96×22 para 3 pantallas, etc.). El motor de scroll de Master System desplaza la cámara en tiempo real siguiendo al protagonista a 60 FPS y hace streaming dinámico de columnas hacia la VRAM durante el VBlank.
