@@ -14,7 +14,7 @@ Para empezar a crear tus propios juegos con **SMS Game Maker**, solo necesitas t
 Es el programa principal desde donde gestionarás tus fases, configurarás las opciones y generarás la ROM de tu juego con un solo clic.
 
 * **Descarga oficial:** [juntelart.itch.io/sms-game-maker](https://juntelart.itch.io/sms-game-maker)
-* **Cómo usarlo:** Solo tienes que descomprimir el archivo y hacer doble clic sobre **`SMSGameMaker.exe`**. No necesitas instalar Python ni nada adicional.
+* **Cómo usarlo:** Solo tienes que hacer doble clic sobre **`SMSGameMaker.exe`**.
 * **Proyecto de ejemplo base:** Puedes descargar una plantilla de juego completa lista para modificar desde [aquí (ZIP)] o  haz clic en **«📥 Descargar Proyecto de Ejemplo»**.
 
 ---
