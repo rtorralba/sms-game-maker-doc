@@ -17,7 +17,7 @@ Esta imagen representa el proyectil que dispara el protagonista al pulsar el **B
 * **Tamaño:** Una imagen PNG de **32×8 píxeles** con fondo transparente, que contiene 4 casillas de 8×8 píxeles:
   * **Casilla 1:** Bala cuando el personaje dispara hacia la **derecha**.
   * **Casilla 2:** Bala cuando el personaje dispara hacia la **izquierda**.
-  * **Casillas 3 y 4:** Disponibles si se configuran disparos en otras direcciones.
+  * **Casillas 3 y 4:** Bala cuando el personaje dispara hacia **arriba o abajo**, disponibles si se configura la vista cenital.
 
 <div class="pixel-art-box">
   <img src="/images/bullet.png" alt="Bala del jugador (ampliada 8x)" style="width: 256px; height: 64px;" />
@@ -39,6 +39,7 @@ Es la imagen del proyectil que disparan los enemigos:
 * **Ubicación:** `game/stage_1/enemy_bullet.png`.
 * **Tamaño:** Imagen PNG de **8×8 píxeles** con fondo transparente.
 * **Cómo activarla:** Los enemigos solo dispararán si en las opciones de la fase activas la opción **`enemyShootEnabled`**. Si esta opción está apagada, ningún enemigo disparará aunque en su tipo de movimiento ponga que dispara.
+* **Muros Sólidos:** Si la bala de un enemigo choca contra una pared, techo o puerta cerrada, la atravesará a menos que tengamos activado **`enemyShootSolidCollide`**.
 
 <div class="pixel-art-box">
   <img src="/images/enemy_bullet.png" alt="Bala de los enemigos (ampliada 8x)" style="width: 64px; height: 64px;" />
