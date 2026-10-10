@@ -26,7 +26,7 @@ Puedes modificar estas propiedades de dos maneras:
 
 * **`initialLife` (int):** Salud inicial del personaje (por defecto `50`).
 * **`lifeAmount` (int):** Cantidad de salud que recupera el protagonista al recoger un ítem de vida (`TILE_LIFE`).
-* **`damageAmount` (int):** Daño que recibe el protagonista al colisionar con un enemigo o con un tile de peligro/trampa.
+* **`damageAmount` (int):** Daño que recibe el protagonista al colisionar con un enemigo o con un tile de daño.
 * **`mainCharacterInvincible` (bool):** Activa la invulnerabilidad total del protagonista (ideal para pruebas y testeo de niveles).
 * **`livesMode` (enum):**
   * `disabled`: Sistema estándar por barra/puntos de energía.
