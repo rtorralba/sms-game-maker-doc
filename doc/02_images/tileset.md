@@ -28,7 +28,7 @@ Para que sea muy fácil crear tu escenario, los bloques están organizados por t
 * **Casilla 0 (La primera):**
   Es el **fondo vacío / aire**. Es la casilla que se usa para dejar zonas por las que el personaje puede pasar libremente.
 * **Casillas del 1 al 58 (Sólidos):**
-  Son los **muros y suelos estándar**. El protagonista, los enemigos y los disparos no pueden atravesarlos.
+  Son los **muros y suelos estándar**. El protagonista, los enemigos y los disparos (si asi lo configuramos) no pueden atravesarlos.
 * **Casilla 59 (Bloque que se Rompe al Pisarlo):**
   Si el personaje se para encima de él, tras unos instantes se romperá y caerá al vacío.
 * **Casilla 60 (Bloque que se Rompe al Disparar):**
@@ -47,8 +47,9 @@ Para que sea muy fácil crear tu escenario, los bloques están organizados por t
   Zonas decorativas que no bloquean el paso (ventanas, cielos, columnas...).
   * Si marcas una casilla como **`damage`**, actuará como trampa (pinchos, fuego) restando salud al tocarla.
   * Si la marcas como **`animated`**, el juego alternará entre esa casilla y la siguiente para crear movimiento (antorchas, agua).
+  * También puedes marcar la casilla como **`animated-damage`**, y realizará las dos funciones descritas anteriormente a la vez.
 * **Casillas del 186 al 191 (Objetos Recogibles):**
-  * **186:** Muestra un cartel o texto en pantalla.
+  * **186:** Muestra un texto configurable en pantalla.
   * **187:** Munición para recargar disparos.
   * **188:** Habilidad de carrera rápida (Dash).
   * **189:** Ítem de Vida que recupera salud.
