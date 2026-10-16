@@ -37,10 +37,6 @@ Puedes modificar estas propiedades de dos maneras:
 
 ## 3. Físicas, Salto y Habilidades
 
-* **`jumpType` (enum: `accelerated` / `constant`):**
-  * `accelerated` (Recomendado): **Física analógica en punto fijo subpíxel 8.8** con impulso inicial variable y dos gravedades:
-    - **Gravedad suave (`+0x0032`):** Manteniendo pulsado el Botón 2 para arcos parabólicos de hasta 3-4 tiles.
-    - **Gravedad fuerte de corte (`+0x0090`):** Al soltar el Botón 2 en pleno ascenso para realizar saltos cortos y milimétricos (*short-hops*).
 * **`disableContinuousJump` (bool):** Exige soltar y volver a pulsar el botón de salto para realizar un nuevo salto (evita rebotes automáticos continuos).
 * **`dashEnabled` (bool):** Activa la mecánica de impulso rápido horizontal con salto largo.
 * **`dashAlwaysAvailable` (bool):** Si está activo, el protagonista inicia la partida con el dash desbloqueado sin necesidad de recoger antes el ítem de dash en el mapa.
